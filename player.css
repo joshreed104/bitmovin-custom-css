@@ -1,0 +1,132 @@
+/* ---------------- New real code. for real this time ---------------- */
+
+/* Container ------- */
+.bmpui-ui-uicontainer
+{
+    margin: 0;
+    padding: -40px;
+}
+
+.bmpui-ui-seekbar {
+    cursor: pointer;
+    height: 16px;
+    position: relative;
+    margin-top: -8px; /* unable to make space above scrollbar tighter (in parent container), so we resorted to negative margin */
+}
+
+/* Seekbar common elements */
+.bmpui-seekbar-backdrop,
+.bmpui-seekbar-bufferlevel,
+.bmpui-seekbar-markers,
+.bmpui-seekbar-markers>.bmpui-seekbar-marker,
+.bmpui-seekbar-playbackposition,
+.bmpui-seekbar-playbackposition-marker,
+.bmpui-seekbar-seekposition {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transform-origin: 0 0;
+    width: 100%;
+    height: 2px;
+}
+
+/* The background bar */
+.bmpui-seekbar-backdrop {
+    background-color: #C3C3C3;
+    margin: auto;
+    transform-origin: 0 0;
+}
+
+/* The bar representing how much audio has played */
+.bmpui-seekbar-playbackposition {
+    background-color: #000000;
+    margin: auto 0;
+    transition: .1s linear,.1s linear;
+    transition-property: transform;
+}
+
+/* Buffer Bar */
+.bmpui-seekbar-bufferlevel {
+    background-color: #C3C3C3; /* buffer level same color as background bar for now */
+    margin: auto 0;
+    transition: .3s linear,.3s linear;
+    transition-property: all, all;
+}
+
+/* The hover color before user clicks on the bar */
+.bmpui-seekbar-seekposition {
+    background-color: #ffffff;
+    opacity: 0.5;
+    margin: auto 0;
+}
+
+/* The current location icon in bar */
+.bmpui-seekbar-playbackposition-marker {
+    width: 11px;
+    height: 11px;
+    background-color: #000000;
+    border-radius: 50%;
+    left: -7.5px;
+    top: 2px;
+}
+
+/* Dark Mode ----------------------------------- */
+@media (prefers-color-scheme: dark) {
+    * {
+        background: #753;
+        color: #dcb;
+        outline: 5px dashed #000;
+    }
+}
+
+/* Hide Default Elements on View ---------------- */
+
+/* Hide standard elements */
+.bmpui-hidden {
+    opacity: 0;
+    transition: opacity .3s,visibility .3s;
+    visibility: hidden;
+}
+
+.bmpui-ui-playbacktimelabel, /* elapsed/total time counter */
+.bmpui-ui-seekbar-label, /* The popup that shows the timecode on the moused-over spot */
+.bmpui-seekbar-markers, /* "chapter" markers */
+.bmpui-ui-titlebar,
+.bmpui-ui-recommendation-overlay,
+.bmpui-ui-errormessage-overlay,
+.bmpui-ui-subtitle-overlay,
+.bmpui-ui-buffering-overlay,
+.bmpui-ui-cast-status-overlay,
+.bmpui-ui-playbacktoggle-overlay,
+.bmpui-ui-watermark,
+.bmpui-ui-playbacktogglebutton,
+.bmpui-ui-volumetogglebutton,
+.bmpui-ui-airplaytogglebutton,
+.bmpui-ui-casttogglebutton,
+.bmpui-ui-vrtogglebutton,
+.bmpui-ui-settingstogglebutton,
+.bmpui-ui-fullscreentogglebutton,
+.bmpui-ui-hugeplaybacktogglebutton,
+.bmpui-ui-hugereplaybutton {
+    opacity: 0;
+    transition: opacity .3s,visibility .3s;
+    visibility: hidden;
+    display: none;
+}
+
+/* ------------------------- Bitmovin Code from Docs------------------------- */
+/* Disable auto-hiding - https://developer.bitmovin.com/playback/docs/how-do-i-disable-auto-hiding-the-control-bar */
+.bmpui-controls-hidden {
+    all: unset !important;
+}
+
+.bmpui-ui-controlbar.bmpui-hidden {
+    visibility: unset !important;
+    opacity: unset !important;
+}
+
+.bmpui-ui-titlebar.bmpui-hidden {
+    visibility: unset !important;
+    opacity: unset !important;
+}
+/* -------------------------------------------------------------------------- */
